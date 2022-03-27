@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  align-items: center;
+  &__title {
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+    color: $color-text;
+  }
+}
