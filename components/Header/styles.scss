@@ -79,15 +79,13 @@
 
   &__cart {
     cursor: pointer;
-    width: 46px;
-    height: 100px;
+    padding: 16px 24px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     @media screen and (max-width: $breakpoint-md) {
-      height: auto;
-      width: 120px;
-      height: 45px;
+      padding: 8px 32px;
     }
   }
 
