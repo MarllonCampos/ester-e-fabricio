@@ -43,9 +43,6 @@
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
       cursor: pointer;
-      &:hover {
-        box-shadow: rgb(0 0 0 / 35%) 1px -31px 23px -27px inset;
-      }
 
       @media screen and (max-width: $breakpoint-sm) {
         width: 40px;
