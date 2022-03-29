@@ -23,9 +23,14 @@
     align-items: center;
     height: 56px;
     width: 100%;
+    transition: all 0.2s ease-out;
     max-width: 520px;
     & :hover {
       box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+      height: 40px;
     }
 
     &-icon {
@@ -40,6 +45,10 @@
       cursor: pointer;
       &:hover {
         box-shadow: rgb(0 0 0 / 35%) 1px -31px 23px -27px inset;
+      }
+
+      @media screen and (max-width: $breakpoint-sm) {
+        width: 40px;
       }
     }
   }
@@ -66,7 +75,7 @@
 
       @media screen and (max-width: $breakpoint-sm) {
         font-size: 16px;
-        top: 30%;
+        top: 20%;
       }
     }
   }
@@ -91,5 +100,6 @@
     align-items: center;
     gap: 16px;
     flex: 1;
+    width: 100%;
   }
 }
