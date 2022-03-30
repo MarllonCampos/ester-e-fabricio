@@ -1,0 +1,69 @@
+.Product {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+
+  height: 200px;
+
+  &__Info {
+    padding: 0 8px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-self: stretch;
+    max-width: 345px;
+  }
+
+  &__Heading {
+    color: $color-text;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    font-family: Poppins, sans-serif;
+  }
+
+  &__Description {
+    color: $color-text;
+    flex: 1;
+    font-size: 0.875rem;
+    font-family: Roboto, sans-serif;
+  }
+
+  &__Buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &-External {
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: Roboto, "sans-serif";
+      color: $color-details;
+      text-decoration: underline;
+      & > a {
+        transition: all 0.2s linear;
+        &:hover {
+          color: rgb(228, 159, 171);
+        }
+      }
+    }
+
+    &-Reserve {
+      font-size: 1rem;
+      font-weight: bold;
+      border: 1px solid $color-secondary;
+      color: $color-secondary;
+      background: transparent;
+      padding: 10px 12px;
+      border-radius: 8px;
+      transition: all 0.2s linear;
+
+      &:hover {
+        background: $color-secondary;
+        color: $color-text;
+        cursor: pointer;
+      }
+    }
+  }
+}
