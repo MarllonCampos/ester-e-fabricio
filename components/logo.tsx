@@ -1,8 +1,8 @@
 import React, { HTMLProps } from "react";
 
-type LogoProps = HTMLProps<HTMLSpanElement>;
+export type AllIconProps = HTMLProps<HTMLSpanElement>;
 
-const Logo = ({ className }: LogoProps) => {
+const Logo = ({ className }: AllIconProps) => {
   return (
     <span className={className}>
       <svg
