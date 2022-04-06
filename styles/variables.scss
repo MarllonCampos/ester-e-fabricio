@@ -1,6 +1,15 @@
-$color-primary: #718055;
-$color-secondary: #ecacb0;
-$color-tertiary: #d9d9d9;
-$color-text: #ffffff;
 $breakpoint-md: 750px;
 $breakpoint-sm: 400px;
+
+$color-background: #f7f7f7;
+$color-primary-100: #465035;
+$color-primary-200: #718055;
+$color-primary-300: #9aaa7e;
+$color-black-100: #30312c;
+$color-black-200: #494b44;
+$color-black-300: #62665c;
+$color-black-400: #7c8174;
+$color-black-500: #969a8e;
+$color-black-600: #afb2a9;
+$color-text-white: $color-background;
+$color-text-black: $color-black-100;
