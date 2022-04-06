@@ -10,7 +10,17 @@ body > div:first-child,
 div#__next,
 div#__next > div {
   min-height: 100vh;
-  background: $color-primary;
+  background: $color-background;
+  color: $color-text-black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-text-white;
 }
 a {
   color: inherit;
@@ -19,7 +29,16 @@ a {
 
 #__next main {
   max-width: 1200px;
+  width: 100%;
   min-height: 100vh;
   margin: 0 auto;
   position: relative;
+}
+
+.Products-container {
+  padding: 32px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  place-items: center;
 }

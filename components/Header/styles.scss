@@ -15,7 +15,7 @@
     font-family: Poppins, sans-serif;
     font-weight: 400;
     font-size: 24px;
-    color: $color-text;
+    color: $color-text-black;
   }
 
   &__search {
@@ -37,15 +37,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $color-tertiary;
+      background-color: $color-black-300;
       height: 100%;
-      width: 56px;
+      width: 100%;
+      max-width: 56px;
       border-top-right-radius: 8px;
       border-bottom-right-radius: 8px;
       cursor: pointer;
 
       @media screen and (max-width: $breakpoint-sm) {
-        width: 40px;
+        max-width: 40px;
+        svg {
+          max-width: 19px;
+        }
       }
     }
   }
@@ -61,12 +65,13 @@
     padding-left: 8px;
     font-size: 20px;
     font-family: Poppins, sans-serif;
+    background-color: $color-black-600;
 
     &::placeholder {
       position: absolute;
       padding-left: 8px;
       top: 20%;
-      color: $color-tertiary;
+      color: $color-text-white;
       font-size: 24px;
       transition: font 0.2s ease-in;
 
