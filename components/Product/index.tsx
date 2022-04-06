@@ -33,7 +33,7 @@ const Product = ({
             <Link href={externalLink}>Ver preço</Link>
           </a>
           <button className="Product__Buttons-Reserve" onClick={reserveProduct}>
-            Reservar
+            Reservar Já
           </button>
         </div>
       </div>
