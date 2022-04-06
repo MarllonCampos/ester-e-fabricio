@@ -38,7 +38,11 @@ a {
 .Products-container {
   padding: 32px 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
   gap: 32px;
   place-items: center;
+
+  @media screen and (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
