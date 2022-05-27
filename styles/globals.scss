@@ -42,6 +42,10 @@ a {
   gap: 32px;
   place-items: center;
 
+  @media screen and (max-width: $breakpoint-md) {
+    padding-top: 0;
+  }
+
   @media screen and (min-width: $breakpoint-lg) {
     grid-template-columns: repeat(2, 1fr);
   }

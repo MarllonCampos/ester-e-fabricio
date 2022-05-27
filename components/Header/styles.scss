@@ -17,6 +17,10 @@
     max-width: 100px;
   }
 
+  &__logo {
+    color: $color-black-100;
+  }
+
   &__title {
     font-family: Poppins, sans-serif;
     font-weight: 400;
