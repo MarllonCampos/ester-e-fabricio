@@ -15,7 +15,7 @@ const Cart: React.FC = () => {
 
       <aside>
         {cartProducts && cartProducts.length < 1 ? (
-          <p className="cart__modal-empty">NÃO HÁ PRODUTOS NO CARRINHO</p>
+          <p className="cart-page__empty">NÃO HÁ PRODUTOS NO CARRINHO</p>
         ) : (
           <div className="Products-container">
             {cartProducts &&

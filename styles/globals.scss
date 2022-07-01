@@ -55,6 +55,12 @@ a {
   h4 {
     text-align: center;
   }
+
+  &__empty {
+    color: $color-text-warning;
+    font-family: Poppins, sans-serif;
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: $breakpoint-sm) {
