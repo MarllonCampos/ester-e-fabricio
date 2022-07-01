@@ -24,68 +24,9 @@
     color: $color-text-black;
   }
 
-  &__search {
-    display: flex;
-    align-items: center;
-    height: 56px;
-    width: 100%;
-    transition: all 0.2s ease-out;
-    max-width: 520px;
-    & :hover {
-      box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
-    }
-
-    @media screen and (max-width: $breakpoint-sm) {
-      height: 40px;
-    }
-
-    &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $color-black-300;
-      height: 100%;
-      width: 100%;
-      max-width: 56px;
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
-      cursor: pointer;
-
-      @media screen and (max-width: $breakpoint-sm) {
-        max-width: 40px;
-        svg {
-          max-width: 19px;
-        }
-      }
-    }
-  }
-
-  &__input {
-    height: 100%;
-    width: 100%;
-    flex: 1;
-    border: 0;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    position: relative;
-    padding-left: 8px;
-    font-size: 20px;
-    font-family: Poppins, sans-serif;
-    background-color: $color-black-600;
-
-    &::placeholder {
-      position: absolute;
-      padding-left: 8px;
-      top: 20%;
-      color: $color-text-white;
-      font-size: 24px;
-      transition: font 0.2s ease-in;
-
-      @media screen and (max-width: $breakpoint-sm) {
-        font-size: 16px;
-        top: 20%;
-      }
-    }
+  &__names {
+    font-size: 1.4rem;
+    font-family: Roboto, sans-serif;
   }
 
   &__cart {

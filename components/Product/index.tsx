@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../contexts/cart";
 
 export interface ProductInterface extends React.HTMLProps<HTMLDivElement> {
   product_id: string;
@@ -18,8 +19,10 @@ const Product = ({
   product_reserved,
   ...props
 }: ProductInterface) => {
+  const { toggleProductOnCart } = useContext(CartContext);
   const reserveProduct = () => {
-    console.log(product_id);
+    const product = { product_id, product_name, product_desc, product_img, product_reserved };
+    toggleProductOnCart(product);
   };
 
   const externalLink = `https://google.com/search?q=${product_name?.replaceAll(" ", "+")}`;
