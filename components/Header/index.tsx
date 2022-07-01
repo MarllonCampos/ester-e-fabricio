@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "../logo";
-import CartIcon from "../cart";
+import CartIcon from "../Cart";
 import SearchIcon from "../search";
 
 const Header: React.FC = () => {

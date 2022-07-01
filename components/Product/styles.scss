@@ -74,6 +74,16 @@
         color: $color-text-black;
         cursor: pointer;
       }
+
+      &--remove {
+        border-color: $color-text-warning;
+        color: $color-text-warning;
+
+        &:hover {
+          background: $color-text-warning;
+          color: $color-text-white;
+        }
+      }
     }
   }
 }

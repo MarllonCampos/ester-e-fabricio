@@ -6,6 +6,7 @@
   padding: 16px;
   gap: 16px;
   min-height: 100px;
+  grid-area: header;
 
   @media screen and (max-width: $breakpoint-md) {
     flex-direction: column;

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -19,7 +20,14 @@ const Product = ({
   product_reserved,
   ...props
 }: ProductInterface) => {
-  const { toggleProductOnCart } = useContext(CartContext);
+  const { toggleProductOnCart, cartProducts } = useContext(CartContext);
+
+  const productOnCart = !!cartProducts?.find(
+    ({ product_id: cartProductId }) => cartProductId === product_id
+  );
+
+  const cartButtonText = productOnCart ? "Remover do Carrinho" : "Adicionar ao Carrinho";
+
   const reserveProduct = () => {
     const product = { product_id, product_name, product_desc, product_img, product_reserved };
     toggleProductOnCart(product);
@@ -27,6 +35,9 @@ const Product = ({
 
   const externalLink = `https://google.com/search?q=${product_name?.replaceAll(" ", "+")}`;
 
+  const cartButtonCn = classNames("Product__Buttons-Reserve", {
+    "Product__Buttons-Reserve--remove": productOnCart,
+  });
   return (
     <div className="Product" {...props}>
       <img
@@ -48,8 +59,8 @@ const Product = ({
               <a target="_blank">Ver preço</a>
             </Link>
           </a>
-          <button className="Product__Buttons-Reserve" onClick={reserveProduct}>
-            Adicionar ao Carrinho
+          <button className={cartButtonCn} onClick={reserveProduct}>
+            {cartButtonText}
           </button>
         </div>
       </div>

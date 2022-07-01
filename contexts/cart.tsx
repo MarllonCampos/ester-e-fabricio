@@ -11,7 +11,7 @@ type CartProvider = {
 };
 
 export function CartProvider(props: any) {
-  const [cartProducts, setCartProducts] = useState<Array<ProductInterface> | undefined>();
+  const [cartProducts, setCartProducts] = useState<Array<ProductInterface> | []>([]);
   const toggleProductOnCart = (product: ProductInterface) => {
     if (!cartProducts) {
       console.log(cartProducts);
