@@ -22,9 +22,8 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState<Boolean>(true);
   const { cartProducts } = useContext(CartContext);
   useEffect(() => {
-    api
-      .get("/products")
-      .then((res) => res.data)
+    fetch(`${process.env.NEXT_PUBLIC_URL_API}/products`, { method: "GET" })
+      .then((res) => res.json())
       .then((res) => {
         setLoading(false);
         setProducts(res);
