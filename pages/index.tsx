@@ -1,64 +1,37 @@
+import axios from "axios";
 import type { NextPage } from "next";
+import { useEffect, useState } from "react";
 
 import Header from "../components/Header";
 import Product, { ProductInterface } from "../components/Product";
+import { api } from "../services/api.config";
 
-const productMock: ProductInterface[] = [
-  {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000_1636571138_gg.jpg",
-    description: "Ajude-me a montar minha casa",
-    productId: "4basd-a3df1-ad31e-143fc",
-    externalLink:
-      "https://www.kabum.com.br/produto/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000",
-    title: "Notebook Lenovo",
-  },
-  {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000_1636571138_gg.jpg",
-    description: "Ajude-me a montar minha casa",
-    productId: "4basd-a3df1-ad31e-143fc",
-    externalLink:
-      "https://www.kabum.com.br/produto/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000",
-    title: "Notebook Lenovo",
-  },
-  {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000_1636571138_gg.jpg",
-    description: "Ajude-me a montar minha casa",
-    productId: "4basd-a3df1-ad31e-143fc",
-    externalLink:
-      "https://www.kabum.com.br/produto/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000",
-    title: "Notebook Lenovo",
-  },
-  {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000_1636571138_gg.jpg",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ullam sit quae amet corporis totam asperiores! Repellendus voluptate odit maiores vitae corporis, in expedita dolorum nesciunt nulla itaque obcaecati illo  nulla itaque obcaecati illo  nulla itaque obcaecati illo  nulla itaque obcaecati illo.",
-    productId: "4basd-a3df1-ad31e-143fc",
-    externalLink:
-      "https://www.kabum.com.br/produto/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000",
-    title: "Notebook Lenovo",
-  },
-  {
-    image:
-      "https://images.kabum.com.br/produtos/fotos/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000_1636571138_gg.jpg",
-    description: "Ajude-me a montar minha casa",
-    productId: "4basd-a3df1-ad31e-143fc",
-    externalLink:
-      "https://www.kabum.com.br/produto/254196/notebook-lenovo-ideapad-3i-intel-celeron-n4020-dual-core-4gb-hd-500gb-linux-15-6-prata-82bus00000",
-    title: "Notebook Lenovo",
-  },
-];
-
+interface Products {
+  product_id: string;
+  product_name: string;
+  product_desc: string;
+  product_img: string;
+  product_reserved: boolean;
+  client_name: string;
+  client_email: string;
+}
 const Home: NextPage = () => {
+  const [products, setProducts] = useState<Array<Products>>([]);
+
+  useEffect(() => {
+    api
+      .get("/products")
+      .then((res) => res.data)
+      .then((res) => {
+        setProducts(res);
+      });
+  }, []);
   return (
     <main>
       <Header />
       <div className="Products-container">
-        {productMock.map(({ productId, ...product }) => (
-          <Product {...product} productId={productId} key={productId} />
+        {products.map(({ product_id, ...product }) => (
+          <Product {...product} product_id={product_id} key={product_id} id={product_id} />
         ))}
       </div>
     </main>

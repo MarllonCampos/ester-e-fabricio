@@ -1,39 +1,52 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export interface ProductInterface extends React.HTMLProps<HTMLDivElement> {
-  image: string;
-  productId: string;
-  description: string;
-  externalLink: string;
-  title: string;
+  product_id: string;
+  product_name: string;
+  product_desc: string;
+  product_img: string;
+  product_reserved: boolean;
 }
 const Product = ({
-  image,
-  title,
-  description,
-  externalLink,
-  productId,
+  product_id,
+  product_name,
+  product_desc,
+  product_img,
+  product_reserved,
   ...props
 }: ProductInterface) => {
   const reserveProduct = () => {
-    console.log(productId);
+    console.log(product_id);
   };
+
+  const externalLink = `https://google.com/search?q=${product_name?.replaceAll(" ", "+")}`;
 
   return (
     <div className="Product" {...props}>
-      <Image src={image} alt="Imagem representativa" width={250} height={200} />
+      <img
+        src={
+          product_img ||
+          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDi-n1KjIOjv4A7SLtwVWPD9pI8AljxZ7pSEmnuX3bGsn3eB7iBu6Vg0nYRLAmB1uBdALMIq2W8UW-9V83MCqV_-djVFOqTrsELB3OruNmT50STpmYT-Y_"
+        }
+        alt="Imagem representativa"
+        width={250}
+        height={200}
+      />
       <div className="Product__Info">
-        <h2 className="Product__Heading">{title}</h2>
-        <p className="Product__Description">{description}</p>
+        <h2 className="Product__Heading">{product_name}</h2>
+        <p className="Product__Description">{product_desc}</p>
 
         <div className="Product__Buttons">
           <a className="Product__Buttons-External">
-            <Link href={externalLink}>Ver preço</Link>
+            <Link href={externalLink}>
+              <a target="_blank">Ver preço</a>
+            </Link>
           </a>
           <button className="Product__Buttons-Reserve" onClick={reserveProduct}>
-            Reservar Já
+            Adicionar ao Carrinho
           </button>
         </div>
       </div>
