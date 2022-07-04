@@ -14,7 +14,6 @@ export function CartProvider(props: any) {
   const [cartProducts, setCartProducts] = useState<Array<ProductInterface> | []>([]);
   const toggleProductOnCart = (product: ProductInterface) => {
     if (!cartProducts) {
-      console.log(cartProducts);
       setCartProducts([product]);
       return;
     }
@@ -25,7 +24,6 @@ export function CartProvider(props: any) {
     const newProducts = isNewProduct
       ? [...cartProducts, product]
       : cartProducts.filter(({ product_id }) => product_id !== product.product_id);
-
     setCartProducts(newProducts);
   };
   return (
