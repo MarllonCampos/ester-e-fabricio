@@ -86,4 +86,48 @@
       }
     }
   }
+
+  &--reserved {
+    background-color: $color-black-500;
+    position: relative;
+
+    &::after {
+      content: "RESERVADO";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-shadow: 2px 2px $color-black-100;
+      background-color: rgba(0, 0, 0, 0.87);
+      transform: translate(-50%, -50%);
+      color: $color-text-warning;
+      font-size: 2rem;
+    }
+    cursor: not-allowed;
+    .Product {
+      $disabled-color: $color-black-300;
+      &__Heading {
+        color: $disabled-color;
+      }
+
+      &__Description {
+        color: $disabled-color;
+      }
+
+      &__Buttons {
+        &-External,
+        &-Reserve {
+          pointer-events: none;
+          color: $disabled-color;
+          cursor: not-allowed;
+          a {
+            cursor: not-allowed;
+          }
+        }
+
+        &-Reserve {
+          border: none;
+        }
+      }
+    }
+  }
 }

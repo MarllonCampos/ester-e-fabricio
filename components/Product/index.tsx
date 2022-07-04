@@ -34,18 +34,20 @@ const Product = ({
   };
 
   const externalLink = `https://google.com/search?q=${product_name?.replaceAll(" ", "+")}`;
-
+  const productCn = classNames("Product", {
+    "Product--reserved": product_reserved,
+  });
   const cartButtonCn = classNames("Product__Buttons-Reserve", {
     "Product__Buttons-Reserve--remove": productOnCart,
   });
   return (
-    <div className="Product" {...props}>
+    <div className={productCn} {...props}>
       <img
         src={
           product_img ||
           "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDi-n1KjIOjv4A7SLtwVWPD9pI8AljxZ7pSEmnuX3bGsn3eB7iBu6Vg0nYRLAmB1uBdALMIq2W8UW-9V83MCqV_-djVFOqTrsELB3OruNmT50STpmYT-Y_"
         }
-        alt="Imagem representativa"
+        alt={`${product_name} - ${product_desc}`}
         width={250}
         height={200}
       />
@@ -59,7 +61,7 @@ const Product = ({
               <a target="_blank">Ver preço</a>
             </Link>
           </a>
-          <button className={cartButtonCn} onClick={reserveProduct}>
+          <button className={cartButtonCn} onClick={reserveProduct} disabled={product_reserved}>
             {cartButtonText}
           </button>
         </div>
