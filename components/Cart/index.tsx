@@ -9,7 +9,7 @@ const CartIcon = ({ className }: AllIconProps) => {
   const { cartProducts } = useContext(CartContext);
 
   return (
-    <Link href="cart" passHref>
+    <Link href="/cart" passHref>
       <a className="cart">
         <svg
           width="33"
@@ -24,7 +24,7 @@ const CartIcon = ({ className }: AllIconProps) => {
           />
           <g>
             <circle cx="25.5" cy="7.5" r="7.5" fill="#E70E0E" />
-            <text y="13" x="21.7" fill="#fff">
+            <text y="13" x="20.7" fill="#fff">
               {cartProducts?.length}
             </text>
           </g>
