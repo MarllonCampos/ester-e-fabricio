@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loading = ({ style }: any) => {
   return (
     <svg
       style={{
@@ -6,6 +6,7 @@ const Loading = () => {
         display: "block",
         background: "transparent",
         shapeRendering: "auto",
+        ...style,
       }}
       width="120px"
       height="120px"

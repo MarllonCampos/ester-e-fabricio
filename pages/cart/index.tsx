@@ -5,11 +5,14 @@ import { CartContext } from "../../contexts/cart";
 import { FaLock, FaArrowLeft, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import ScrollToTop from "../../components/ScrollToTop";
+import Swal from "sweetalert2";
+import Loading from "../../components/Loading";
 
 const Cart: React.FC = () => {
   const [modalIsOpen, setIsModalOpen] = useState(false);
-  const [userData, setUserData] = useState<any>({ email: "", nome: "" });
-  const { cartProducts } = useContext(CartContext);
+  const [loading, setIsLoading] = useState<boolean>(false);
+  const [userData, setUserData] = useState<any>({ email: "", name: "" });
+  const { cartProducts, setCartProducts } = useContext(CartContext);
 
   const openModal = () => {
     if ((document.body.getBoundingClientRect().top * -1, window.innerHeight)) {
@@ -28,18 +31,49 @@ const Cart: React.FC = () => {
 
   const closeModal = () => {
     document.body.classList.remove("no-overflow");
-    setUserData({ email: "", nome: "" });
+    setUserData({ email: "", name: "" });
     setIsModalOpen(false);
   };
 
   const handleUserDataChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserData((prevState: any) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(userData);
     const products_id = cartProducts?.map(({ product_id }) => product_id);
-    console.log(products_id);
+    const body = JSON.stringify({ id: products_id, name: userData.name, email: userData.email });
+    setIsLoading(true);
+    const send = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/products`, {
+      method: "PATCH",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body,
+    });
+    const res = await send.json();
+    if (send.status === 200) {
+      Swal.fire({
+        title: "Sucesso",
+        timer: 2500,
+        timerProgressBar: true,
+        html: res.message,
+        showConfirmButton: true,
+        icon: "success",
+      });
+    } else {
+      Swal.fire({
+        title: "Aviso",
+        timer: 2500,
+        timerProgressBar: true,
+        html: res.message,
+        showConfirmButton: true,
+        icon: "warning",
+      });
+    }
+    closeModal();
+    setIsLoading(false);
+    setCartProducts([]);
   };
   const emptyCart = () => cartProducts && cartProducts?.length < 1;
 
@@ -84,11 +118,11 @@ const Cart: React.FC = () => {
             <form className="cart-page__info-container__form" onSubmit={handleSubmit}>
               <div className="cart-page__info-container__form-container">
                 <div className="cart-page__info-container__form-input-container">
-                  <label htmlFor="nome">Nome: </label>
+                  <label htmlFor="Name">Nome: </label>
                   <input
                     type="text"
-                    name="nome"
-                    id="nome"
+                    name="name"
+                    id="name"
                     onChange={handleUserDataChange}
                     required
                   />
@@ -104,7 +138,7 @@ const Cart: React.FC = () => {
                   />
                 </div>
               </div>
-
+              {loading && <Loading style={{ margin: "0 auto", flex: 2 }} />}
               <button
                 type="submit"
                 className="cart-page__info-container__form-send"

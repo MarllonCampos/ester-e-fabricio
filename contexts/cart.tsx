@@ -1,10 +1,11 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 import Product, { ProductInterface } from "../components/Product";
 
 export const CartContext = createContext({} as CartContext);
 type CartContext = {
   toggleProductOnCart: (product: ProductInterface) => void;
   cartProducts: Array<ProductInterface> | undefined;
+  setCartProducts: Dispatch<SetStateAction<ProductInterface[] | []>>;
 };
 type CartProvider = {
   children: ReactNode;
@@ -27,7 +28,7 @@ export function CartProvider(props: any) {
     setCartProducts(newProducts);
   };
   return (
-    <CartContext.Provider value={{ toggleProductOnCart, cartProducts }}>
+    <CartContext.Provider value={{ toggleProductOnCart, cartProducts, setCartProducts }}>
       {props.children}
     </CartContext.Provider>
   );
