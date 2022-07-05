@@ -12,6 +12,7 @@ div#__next > div {
   min-height: 100vh;
   background: $color-background;
   color: $color-text-black;
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -20,7 +21,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: $color-text-white;
+  color: $color-text-black;
+  font-family: Poppins, sans-serif;
 }
 a {
   color: inherit;
@@ -36,13 +38,38 @@ a {
 }
 
 .Products-container {
-  padding: 32px 16px;
+  padding: 16px;
   display: grid;
 
   gap: 32px;
   place-items: center;
+  grid-area: content;
 
   @media screen and (min-width: $breakpoint-lg) {
+    padding-top: 32px;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.no-overflow {
+  overflow-y: hidden;
+}
+
+.scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: $color-primary-100;
+  color: $color-text-white;
+  border-radius: 100%;
+  width: 48px;
+  height: 48px;
+
+  cursor: pointer;
 }

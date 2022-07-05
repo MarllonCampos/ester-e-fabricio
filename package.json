@@ -10,11 +10,15 @@
     "plop": "plop"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "classnames": "^2.3.1",
     "next": "12.1.1",
     "plop": "^3.0.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.49.9"
+    "react-icons": "^4.4.0",
+    "sass": "^1.49.9",
+    "sweetalert2": "^11.4.19"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
