@@ -23,7 +23,7 @@ const CartIcon = ({ className }: AllIconProps) => {
             fill="black"
           />
           <g>
-            <circle cx="25.5" cy="7.5" r="7.5" fill="#E70E0E" />
+            <circle cx="25.5" cy="7.5" r="7.5" fill="#AB786D" />
             <text y="13" x="20.7" fill="#fff">
               {cartProducts?.length}
             </text>

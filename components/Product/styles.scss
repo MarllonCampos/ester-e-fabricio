@@ -69,10 +69,12 @@
       border-radius: 8px;
       transition: all 0.2s linear;
 
-      &:hover {
-        background: $color-background;
-        color: $color-text-black;
-        cursor: pointer;
+      @media screen and (min-width: $breakpoint-sm) {
+        &:hover {
+          background: $color-background;
+          color: $color-text-black;
+          cursor: pointer;
+        }
       }
 
       &--remove {

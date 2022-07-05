@@ -7,6 +7,8 @@ import Loading from "../components/Loading";
 import Product, { ProductInterface } from "../components/Product";
 import { CartContext } from "../contexts/cart";
 import { api } from "../services/api.config";
+import { FaAngleUp } from "react-icons/fa";
+import ScrollToTop from "../components/ScrollToTop";
 
 interface Products {
   product_id: string;
@@ -20,7 +22,7 @@ interface Products {
 const Home: NextPage = () => {
   const [products, setProducts] = useState<Array<Products>>([]);
   const [loading, setLoading] = useState<Boolean>(true);
-  const { cartProducts } = useContext(CartContext);
+
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_URL_API}/products`, { method: "GET" })
       .then((res) => res.json())
@@ -29,10 +31,6 @@ const Home: NextPage = () => {
         setProducts(res);
       });
   }, []);
-
-  useEffect(() => {
-    console.info(cartProducts);
-  }, [cartProducts]);
 
   return (
     <main className="main">
@@ -45,6 +43,8 @@ const Home: NextPage = () => {
           ))}
         </div>
       )}
+
+      <ScrollToTop />
     </main>
   );
 };
