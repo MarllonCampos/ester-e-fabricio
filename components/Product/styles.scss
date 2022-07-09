@@ -97,12 +97,8 @@
   }
 
   &--reserved {
-    background-color: $color-black-500;
-
     cursor: not-allowed;
     .Product {
-      $disabled-color: $color-black-300;
-
       &__Img {
         filter: blur(5px);
       }
@@ -110,31 +106,19 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%);
-        width: 190px;
-        height: 160px;
-      }
-      &__Heading {
-        color: $disabled-color;
-      }
-
-      &__Description {
-        color: $disabled-color;
+        transform: translate(-50%, -50%) scale(0.8) rotateZ(-10deg);
+        width: 250px;
+        height: 120px;
       }
 
       &__Buttons {
         &-External,
         &-Reserve {
           pointer-events: none;
-          color: $disabled-color;
           cursor: not-allowed;
           a {
             cursor: not-allowed;
           }
-        }
-
-        &-Reserve {
-          border: none;
         }
       }
     }

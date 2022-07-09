@@ -65,11 +65,11 @@ const Product = ({
         <p className="Product__Description">{product_desc}</p>
 
         <div className="Product__Buttons">
-          <a className="Product__Buttons-External">
-            <Link href={externalLink}>
-              <a target="_blank">Ver preço</a>
-            </Link>
-          </a>
+          <Link href={externalLink} passHref>
+            <a target="_blank" className="Product__Buttons-External">
+              Ver preço
+            </a>
+          </Link>
           <button className={cartButtonCn} onClick={reserveProduct} disabled={product_reserved}>
             {cartButtonText}
           </button>
