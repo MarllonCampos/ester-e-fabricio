@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ["images.kabum.com.br"],
   },
+  env: {
+    API_WEDDING: process.env.API_WEDDING
+  }
 }
 
 module.exports = nextConfig

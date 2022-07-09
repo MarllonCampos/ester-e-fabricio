@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import classNames from "classnames";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { CartContext } from "../../contexts/cart";
-
+import reservedPlate from "/public/placa-reservado.png";
 export interface ProductInterface extends React.HTMLProps<HTMLDivElement> {
   product_id: string;
   product_name: string;
@@ -42,15 +41,25 @@ const Product = ({
   });
   return (
     <div className={productCn} {...props}>
-      <img
-        src={
-          product_img ||
-          "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRDi-n1KjIOjv4A7SLtwVWPD9pI8AljxZ7pSEmnuX3bGsn3eB7iBu6Vg0nYRLAmB1uBdALMIq2W8UW-9V83MCqV_-djVFOqTrsELB3OruNmT50STpmYT-Y_"
-        }
-        alt={`${product_name} - ${product_desc}`}
-        width={250}
-        height={200}
-      />
+      <div className="Product__Image-Container">
+        <img
+          src={product_img}
+          alt={`${product_name} - ${product_desc}`}
+          width={250}
+          height={200}
+          loading="lazy"
+          className="Product__Img"
+        />
+
+        {product_reserved && (
+          <img
+            src={reservedPlate.src}
+            alt="plaquinha de reservado"
+            className="Product__Reserved-Plate"
+            loading="lazy"
+          />
+        )}
+      </div>
       <div className="Product__Info">
         <h2 className="Product__Heading">{product_name}</h2>
         <p className="Product__Description">{product_desc}</p>
