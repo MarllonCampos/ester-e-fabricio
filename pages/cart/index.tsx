@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
     const products_id = cartProducts?.map(({ product_id }) => product_id);
     const body = JSON.stringify({ id: products_id, name: userData.name, email: userData.email });
     setIsLoading(true);
-    const send = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/products`, {
+    const send = await fetch(`${process.env.API_WEDDING}/products`, {
       method: "PATCH",
       headers: {
         "Accept": "application/json",

@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState<Boolean>(true);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL_API}/products`, { method: "GET" })
+    fetch(`${process.env.API_WEDDING}/products`, { method: "GET" })
       .then((res) => res.json())
       .then((res) => {
         setLoading(false);
