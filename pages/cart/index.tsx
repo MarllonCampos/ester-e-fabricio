@@ -40,8 +40,14 @@ const Cart: React.FC = () => {
   };
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const products_id = cartProducts?.map(({ product_id }) => product_id);
-    const body = JSON.stringify({ id: products_id, name: userData.name, email: userData.email });
+    const productsId = cartProducts?.map(({ product_id }) => product_id);
+    const productsName = cartProducts?.map(({ product_name }) => product_name);
+    const body = JSON.stringify({
+      id: productsId,
+      products: productsName,
+      name: userData.name,
+      email: userData.email,
+    });
     setIsLoading(true);
     const send = await fetch(`${process.env.API_WEDDING}/products`, {
       method: "PATCH",
