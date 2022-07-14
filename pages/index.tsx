@@ -9,6 +9,7 @@ import { CartContext } from "../contexts/cart";
 import { api } from "../services/api.config";
 import { FaAngleUp } from "react-icons/fa";
 import ScrollToTop from "../components/ScrollToTop";
+import Head from "next/head";
 
 interface Products {
   product_id: string;
@@ -34,6 +35,9 @@ const Home: NextPage = () => {
 
   return (
     <main className="main">
+      <Head>
+        <title>Estoque</title>
+      </Head>
       <Header />
       {loading && <Loading />}
       {!loading && (

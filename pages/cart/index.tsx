@@ -7,6 +7,7 @@ import Link from "next/link";
 import ScrollToTop from "../../components/ScrollToTop";
 import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
+import Head from "next/head";
 
 const Cart: React.FC = () => {
   const [modalIsOpen, setIsModalOpen] = useState(false);
@@ -85,6 +86,9 @@ const Cart: React.FC = () => {
 
   return (
     <main className="cart-page">
+      <Head>
+        <title>Carrinho</title>
+      </Head>
       <Header />
       <h2 className="cart-page__title">Carrinho</h2>
 
