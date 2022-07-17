@@ -12,7 +12,7 @@ import Head from "next/head";
 const Cart: React.FC = () => {
   const [modalIsOpen, setIsModalOpen] = useState(false);
   const [loading, setIsLoading] = useState<boolean>(false);
-  const [userData, setUserData] = useState<any>({ email: "", name: "" });
+  const [userData, setUserData] = useState<any>({ email: "", name: "", confirmEmail: "" });
   const { cartProducts, setCartProducts } = useContext(CartContext);
 
   const openModal = () => {
@@ -41,6 +41,27 @@ const Cart: React.FC = () => {
   };
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    if (
+      userData.confirmEmail.length > 3 &&
+      userData.confirmEmail.includes("@") &&
+      userData.confirmEmail !== userData.email
+    ) {
+      Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      }).fire({
+        icon: "warning",
+        title: "Emails diferem",
+      });
+      return;
+    }
     const productsId = cartProducts?.map(({ product_id }) => product_id);
     const productsName = cartProducts?.map(({ product_name }) => product_name);
     const body = JSON.stringify({
@@ -125,6 +146,15 @@ const Cart: React.FC = () => {
             <p className="cart-page__info-container-description">
               Para podermos reservar estes produtos, precisamos de algumas informações suas.
             </p>
+            <p className="cart-page__warning">
+              É importante cadastrar um email valido pois enviaremos um email de confirmação com os
+              produtos escolhidos
+            </p>
+
+            <p className="cart-page__warning">
+              Caso não receba o email de confirmação nos proximos 10 minutos, verifique a caixa de
+              spam
+            </p>
             <form className="cart-page__info-container__form" onSubmit={handleSubmit}>
               <div className="cart-page__info-container__form-container">
                 <div className="cart-page__info-container__form-input-container">
@@ -140,9 +170,18 @@ const Cart: React.FC = () => {
                 <div className="cart-page__info-container__form-input-container">
                   <label htmlFor="email">Email: </label>
                   <input
-                    type="text"
+                    type="email"
                     name="email"
                     id="email"
+                    onChange={handleUserDataChange}
+                    required
+                  />
+
+                  <label htmlFor="confirmEmail">Confirme o Email</label>
+                  <input
+                    type="email"
+                    name="confirmEmail"
+                    id="confirmEmail"
                     onChange={handleUserDataChange}
                     required
                   />
